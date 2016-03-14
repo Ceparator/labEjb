@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <table>
+                <tr>
+                    <th>
+                        <h:outputLabel value="Name" for="name"/>
+                    </th>
+                    <th>
+                        <h:inputText id="name" value="#{addTaskBean.task.name}" required="true">  
+                        </h:inputText>                                                                   
+
+                    </th>
+                    <th>
+                        <h:message for="name" style="color:red" /> 
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <h:outputLabel value="Description" for="weight"/>
+                    </th>
+                    <th>
+                        <h:inputText id="weight" value="#{addTaskBean.task.description}" required="true">
+                        </h:inputText>                                                                   
+                    </th>
+                    <th>
+                        <h:message for="Вес" style="color:red" /> 
+                    </th>
+                </tr> 
+                <tr>
+                    <th>
+                        <h:outputLabel value="Must be done" for="dueDate"/>
+                    </th>
+                    <th>
+                        <input id="dueDate" name="dueDate" type="text" value="${addTaskBean.task.dueDate}"/>                                                              
+                    </th>
+                    <th>
+                        <h:message for="dueDate" style="color:red" /> 
+                    </th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>
+                        <h:commandLink value="Add task" action="#{addTaskBean.adTask()}"/>
+                    </th>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>
+
