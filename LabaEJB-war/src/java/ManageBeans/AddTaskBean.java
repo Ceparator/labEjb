@@ -17,6 +17,7 @@ import javax.ejb.Stateful;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.inject.Inject;
@@ -27,7 +28,7 @@ import javax.inject.Singleton;
  * @author Ceparator
  */
 @Named(value = "addTaskBean")
-@ConversationScoped
+@SessionScoped
 public class AddTaskBean implements Serializable {
 
     @EJB
@@ -35,9 +36,17 @@ public class AddTaskBean implements Serializable {
     @EJB
     private DelTaskDAOImpl delTaskDAOImpl;
 
-    private int count;
     private Task task;
+    private int c;
     private int editId;
+
+    public int getC() {
+        return c;
+    }
+
+    public void setC(int c) {
+        this.c = c;
+    }
 
     public int getEditId() {
         return editId;
@@ -46,7 +55,7 @@ public class AddTaskBean implements Serializable {
     public void setEditId(int editId) {
         this.editId = editId;
     }
-    
+
     public Task getTask() {
         return task;
     }
@@ -59,39 +68,16 @@ public class AddTaskBean implements Serializable {
         task = new Task();
     }
 
-    @PostConstruct
-    public void init() {
-        count = 0;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    @Inject
-    Conversation conversation;
-
     public void adTask() {
-        if (conversation.isTransient()) {
-            conversation.begin();
-        }
-        taskDAOImpl.addTask(task);
-        count++;
+        this.c = delTaskDAOImpl.addTask(task);
     }
-    
-    public String toTheDelTask(int idTask){
+
+    public String toTheDelTask(int idTask) {
         this.editId = idTask;
         return "/delTask.xhtml";
     }
 
     public void delTask(int idTask) {
-        delTaskDAOImpl.deleteTask(idTask);
-        if (!conversation.isTransient()) {
-            conversation.end();
-        }
+        this.c = delTaskDAOImpl.deleteTask(idTask);
     }
 }

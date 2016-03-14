@@ -54,31 +54,6 @@ public class TaskDAOImpl implements TaskDAO {
         }
     }
 
-    @Override
-    public Task addTask(Task task) {
-        try (Connection connection = dataSource.getConnection()) {
-            String query = "INSERT INTO task (name, description, due_date) VALUES (?, ?, ?)";
-            PreparedStatement stmt = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, task.getName());
-            stmt.setString(2, task.getDescription());
-            stmt.setTimestamp(3, new Timestamp(task.getDueDate().getTime()));
-            stmt.executeUpdate();
-            ResultSet resultSet = stmt.getGeneratedKeys();
-            if (resultSet.next()) {
-                task.setId(resultSet.getInt(1));
-                return task;
-            }
-            throw new Exception("Task not added to db");
-        } catch (Exception e) {
-            throw new RuntimeException("An error has occurred in addTask method", e);
-        } finally {
-            try {
-                dataSource.getConnection().close();
-            } catch (SQLException ex) {
-                Logger.getLogger(TaskDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
 
     @Override
     public Task getTaskById(Integer taskId) {

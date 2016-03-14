@@ -14,5 +14,6 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface DelTaskDAO {
-    boolean deleteTask(int idTask);
+    int deleteTask(int idTask);
+    int addTask(Task task);
 }

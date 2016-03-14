@@ -20,7 +20,7 @@ public interface TaskDAO {
 
     Task getTaskById(Integer taskId);
 
-    Task addTask(Task task);
+    //Task addTask(Task task);
 
     boolean editTask(Task task);
 
