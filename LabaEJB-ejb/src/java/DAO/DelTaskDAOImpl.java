@@ -28,7 +28,6 @@ import javax.sql.DataSource;
  * @author Ceparator
  */
 @ConversationScoped
-@Remote(DelTaskDAO.class)
 public class DelTaskDAOImpl implements DelTaskDAO, Serializable {
 
     @Resource(lookup = "jdbc/laba")

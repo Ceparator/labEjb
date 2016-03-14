@@ -68,8 +68,11 @@ public class AddTaskBean implements Serializable {
         task = new Task();
     }
 
-    public void adTask() {
+    public String adTask() {
+        java.sql.Date newDate = new java.sql.Date(task.getDueDate().getTime());
+        task.setDueDate(newDate);
         this.c = delTaskDAOImpl.addTask(task);
+        return "/index.xhtml";
     }
 
     public String toTheDelTask(int idTask) {
@@ -77,7 +80,8 @@ public class AddTaskBean implements Serializable {
         return "/delTask.xhtml";
     }
 
-    public void delTask(int idTask) {
+    public String delTask(int idTask) {
         this.c = delTaskDAOImpl.deleteTask(idTask);
+        return "/index.xhtml";
     }
 }

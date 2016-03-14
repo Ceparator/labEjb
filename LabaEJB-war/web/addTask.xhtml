@@ -33,12 +33,25 @@
                         <h:message for="Вес" style="color:red" /> 
                     </th>
                 </tr> 
+                <!--
                 <tr>
                     <th>
                         <h:outputLabel value="Must be done" for="dueDate"/>
                     </th>
                     <th>
                         <input id="dueDate" name="dueDate" type="text" value="${addTaskBean.task.dueDate}"/>                                                              
+                    </th>
+                    <th>
+                        <h:message for="dueDate" style="color:red" /> 
+                    </th>
+                </tr>-->
+                <tr>
+                    <th>
+                        <h:outputLabel value="Must be done" for="dueDate"/>
+                    </th>
+                    <th>
+                        <h:inputText id="dueDate" value="#{addTaskBean.task.dueDate}" required="true">  
+                        </h:inputText>                                                                   
                     </th>
                     <th>
                         <h:message for="dueDate" style="color:red" /> 
