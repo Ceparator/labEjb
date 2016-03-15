@@ -3,25 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ManageBeans;
+package beans;
 
-import DAO.DelTaskDAOImpl;
-import DAO.TaskDAO;
-import DAO.TaskDAOImpl;
-import Model.Task;
+import dao.DelTaskDAOImpl;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateful;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.Conversation;
-import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import model.Task;
 
 /**
  *
@@ -32,7 +22,7 @@ import javax.inject.Singleton;
 public class AddTaskBean implements Serializable {
 
     @EJB
-    private DelTaskDAOImpl delTaskDAOImpl;
+    private DelTaskDAOImpl dao;
 
     @PostConstruct
     private void initializeBean() {
@@ -74,7 +64,7 @@ public class AddTaskBean implements Serializable {
     public String adTask() {
         java.sql.Date newDate = new java.sql.Date(task.getDueDate().getTime());
         task.setDueDate(newDate);
-        this.c = delTaskDAOImpl.addTask(task);
+        this.c = dao.addTask(task);
         return "/index.xhtml";
     }
 
@@ -84,7 +74,7 @@ public class AddTaskBean implements Serializable {
     }
 
     public String delTask(int idTask) {
-        this.c = delTaskDAOImpl.deleteTask(idTask);
+        this.c = dao.deleteTask(idTask);
         return "/index.xhtml";
     }
 }

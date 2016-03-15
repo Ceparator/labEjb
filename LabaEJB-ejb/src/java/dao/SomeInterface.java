@@ -3,17 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
-
-import Model.Task;
-import javax.ejb.Remote;
+package dao;
 
 /**
  *
  * @author Ceparator
  */
-@Remote
-public interface DelTaskDAO {
-    int deleteTask(int idTask);
-    int addTask(Task task);
+
+public interface SomeInterface {
+    String checkLength(int l);
 }

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package dao;
 
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -21,7 +22,7 @@ import javax.enterprise.context.ApplicationScoped;
 @LocalBean
 @ApplicationScoped
 @Startup
-public class SomeInterfaceImpl implements SomeInterface {
+public class SomeInterfaceImpl implements SomeInterface, Serializable {
     
     private int length;
 

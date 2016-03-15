@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package dao;
 
-import Model.Task;
+import model.Task;
 import java.util.List;
 import javax.ejb.Remote;
 

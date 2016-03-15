@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ManageBeans;
+package beans;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
