@@ -25,7 +25,6 @@ import javax.sql.DataSource;
  * @author Ceparator
  */
 @Stateless
-@Remote(TaskDAO.class)
 public class TaskDAOImpl implements TaskDAO {
 
     @Resource(lookup = "jdbc/laba")
@@ -76,7 +75,6 @@ public class TaskDAOImpl implements TaskDAO {
             throw new RuntimeException("Произошла ошибка во время вызова метода getTaskById", e);
         }
     }
-
 
     @Override
     public boolean editTask(Task task) {

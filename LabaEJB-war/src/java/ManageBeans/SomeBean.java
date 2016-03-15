@@ -22,7 +22,7 @@ public class SomeBean implements Serializable {
 
     @PostConstruct
     private void initializeBean() {
-        chislo =0;
+        chislo =5;
     }
 
     public int getChislo() {

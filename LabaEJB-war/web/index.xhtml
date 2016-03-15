@@ -26,15 +26,22 @@
                     <f:facet name="header"> Date</f:facet>
                     <h:outputText value="#{t.dueDate}"></h:outputText>
                 </h:column>
+                <h:column>
+                    <h:commandButton  value="Delete task" action="#{addTaskBean.toTheDelTask(t.id)}"/>  
+                </h:column>
             </h:dataTable>
             <br/><br/>
-            <h:commandButton  value="Increace some number o_O" action="#{someBean.addChislo()})}"/>  
+            <h:commandButton  value="Increace some number o_O" action="#{someBean.addChislo()}"/>  
             <br/>
             <h:outputLabel value="Chislo = #{someBean.chislo}" for="chislo"/>
             <br/><br/>
-            <h:outputLabel value="Created without delete #{addTaskBean.c}" for="count"/>
+            <h:commandButton  value="Increace some other number" action="#{singleSomeBean.addNumber()}"/>  
+            <br/>
+            <h:outputLabel value="Chislo = #{singleSomeBean.number}" for="number"/>
             <br/><br/>
-            <h:commandLink value="Add task" action="/add.xhtml" />
+            <h:outputLabel value="Created without delete" for="count"/>
+            <br/><br/>
+            <h:commandLink value="Add task" action="/addTask.xhtml" />
         </h:form>
     </h:body>
 </html>

@@ -32,9 +32,12 @@ import javax.inject.Singleton;
 public class AddTaskBean implements Serializable {
 
     @EJB
-    private TaskDAOImpl taskDAOImpl;
-    @EJB
     private DelTaskDAOImpl delTaskDAOImpl;
+
+    @PostConstruct
+    private void initializeBean() {
+        c = 0;
+    }
 
     private Task task;
     private int c;
